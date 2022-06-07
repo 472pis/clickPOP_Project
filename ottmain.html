@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ClickPoP</title>
+  <script src="https://kit.fontawesome.com/5f29a57a20.js" crossorigin="anonymous"></script>
+</head>
+<style>
+  
+  html, body, .main{
+    width:100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main{
+    display: flex;    
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  header{
+    flex:0 1 auto;
+    display: flex;
+    justify-content: space-between;
+    padding:1rem;
+    background-color: dimgray;
+  }
+  
+  header .lefthead{
+    display: flex;
+  }
+  
+  header .lefthead .logo{
+    margin-left: 10px;
+    width:70px;
+    height:auto;
+    margin-right: 10px;
+  }
+  
+  .logo img{
+    width:100%;
+  }
+  
+  header .lefthead .navwrap{
+    margin-left: 10px;
+    display:flex;
+  }
+  
+  header .lefthead .navwrap div{
+    background-color: black;
+    color : white;
+    padding : 1rem;
+  }
+  
+  header .righthead{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  header .righthead div{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 5px;
+    background-color: black;
+    color:lightgray;
+  }
+  
+  header .righthead #searchbt{
+    background-color: inherit;
+
+  }
+  
+  .contentsWrap{
+    flex:3 0 auto;
+    background-color: black;
+  }
+  
+  
+  .discriptionWrap{
+    flex:0 1 auto;
+    color:white;
+    background-color: dimgray;
+    padding:2rem;
+  }
+  
+  #title{
+    display: flex;
+    justify-content: space-between;
+  }
+  #title > span{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  #title .sharebt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    flex:1 0 auto;
+  }
+  
+  #title .sharebt > span{
+    font-size: 9pt;
+    color:lightgray;
+  }
+  
+  #title .sharebt > span > i{
+    font-size:1.5rem;
+  }
+  
+  #titlesub > span{
+    font-size: 9pt;
+    color:lightgray;
+    
+  }
+  
+  #titlesub > span:after{
+    content: "";
+    border-right:1px solid lightgray;
+    margin:5px;
+  }
+  
+  #discription{
+    margin-top:1rem;
+    color:lightgray;
+  }
+  
+  
+  #playercont{
+    position: relative;
+    width:700px;
+    height:460px;
+    background-color: black;
+    overflow: visible;
+  }
+  
+  .card{
+    position: absolute;
+    top:-500px;
+    left:-500px;
+    max-width:150px;
+    min-width:100px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:1rem;
+    }
+  
+  .card .imgcont{
+    
+      width:100px;
+      height:auto;
+      overflow:hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .imgcont img{
+    width:100%;
+    height:auto;
+  }
+  
+  .button, #hidebt{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #hidebt{
+    position: absolute;
+    bottom:5px;
+    right:10px;
+  }
+  
+  .button{
+    top:-30px;
+    left:-10px;
+    position: absolute;
+    display: none;
+    background-color: black;
+    padding : 10px;
+  }
+  
+  .button img, #hidebt img{
+    width:100%;
+  }
+  
+  #point{
+    flex:1;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: inline-block;
+    list-style: none;
+    background-color:lightgray;
+    
+  }
+  
+  #point li{
+    padding:1rem;
+    padding-left: 2rem;
+  }
+  
+  .video{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    
+  }
+  
+  .cont{
+    margin-top:1rem;
+  }
+  
+  .cont a{
+    font-weight: bold;
+  }
+</style>
+<body>
+  <div class="main">
+    <header>
+    <div class="lefthead">
+      <div class="logo">
+        <img src="./logo.png" alt="">
+        </div>
+        <div class="navwrap">
+          <div id="homebt">홈</div>
+          <div id="all">전체보기</div>
+          <div id="schedule">스케줄</div>
+        </div>
+      </div>
+     <div class="righthead">
+     <div id="searchbt">검색</div>
+      <div id="loginbt">로그인</div>
+      <div id="eventbt">이벤트</div>
+     </div>
+    </header>
+    <div class="contentsWrap">
+      <div class="video">
+        
+        
+         <div id="playercont">
+   <div id="player"></div>
+  <div id="hidebt"><img src="logo.png" alt=""></div>
+  <div class="button"><img src="logo.png" alt=""></div>
+  <div class="card"><div class="imgcont"><img src="logo.png" alt=""></div><div class="cont"></div></div>
+ </div>
+  
+  <div id="point"></div>
+        
+        
+      </div>
+    </div>
+    <div class="discriptionWrap">
+      <div id="title">
+        <span>[🇦🇺vlog] 마트 가서 장보고 집 와서 밥 만들어 먹는 건전하고 알찬 영상</span>
+        <div class="sharebt">
+          <span><i class="fa-solid fa-share-nodes"></i></span>
+          <span>공유하기</span>
+        </div>
+      </div>
+      <div id="titlesub">
+        <span id="category">desktop, Youtube</span><span id="date">2021. 9. 25</span><span id="time">0:45</span>
+      </div>
+      <div id="discription">
+        쭈하쭈하~ 해쭈를 더 원하신다면 아래 링크를 통하여 함께해쭈~
+        
+        유튜브 라이브 스트리밍 재방 계정https://www.youtube.com/channel/UCJ2a...
+트위치 https://www.twitch.tv/haejoooo
+인스타그램 https://instagram.com/hae_jooooo_
+팬카페 https://m.cafe.naver.com/australiahaeju
+
+비지니스 문의는 👉🏽team.haejoo@gmail.com
+      </div>
+    </div>
+  </div>
+<script>
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var section = {
+  start: 240, // 반복 시작 시간(초)
+  end: 280 // 반복 종료 시간(초)
+};
+  
+  
+
+  //key = 시간초 value = 내용, 좌표
+var card = {
+  13:["펠릭스 습식 사료",[250,250],'11cMYaRiSsSC5YPotd8gr2g2VF5kFY0Ea' ,'http://item.gmarket.co.kr/DetailView/Item.asp?goodscode=2407275851&GoodsSale=Y&jaehuid=200001169&NaPm=ct%3Dl3twmza8%7Cci%3D24d93fe0214d7bc66847df90a62892ae45773503%7Ctr%3Dslsl%7Csn%3D24%7Chk%3Dd5aa1c3a410bb1493e5330071133eaf3b4af456c'],
+  16:["올드엘파소 또띠아",[500, 200],'1pCeVmBSqGhsCQB7jo1Yrc2GFj-SICi-l', 'https://search.shopping.naver.com/catalog/27037687658?query=%EC%98%AC%EB%93%9C%EC%97%98%ED%8C%8C%EC%86%8C%20%EB%98%90%EB%9D%A0%EC%95%84&NaPm=ct%3Dl3twpq1s%7Cci%3Da8bc494d9a4938d7a9cfb283de13808fe4ca85b6%7Ctr%3Dslsl%7Csn%3D95694%7Chk%3D177ff57fcc7ca58c8d4041bdf2ccb965f4e24cde'],
+  23:["마스터푸드 렐리시",[450,200],'1aLjc5_FMQKiUZcnLDPJzCDSMZF8sLHta','https://shopping.naver.com/foreign/stores/100434187/products/4646860613?NaPm=ct%3Dl3twnoqw%7Cci%3D1f121d2c104b661be2d36bbed2992bd3e3ddc35e%7Ctr%3Dslsl%7Csn%3D945598%7Chk%3Da217126e43173deddc5379cd61761b4213157a90'],
+  32:["사클라 바질페스토",[400,150],'100aF0hqVEW7s9AqYes42_C7a8QTsRPVv','https://www.coupang.com/vp/products/4883081764?itemId=6359418394&vendorItemId=73654688045&src=1032001&spec=10305201&addtag=400&ctag=4883081764&lptag=P4883081764&itime=20220531173940&pageType=PRODUCT&pageValue=4883081764&wPcid=15788933206576410921127&wRef=cr.shopping.naver.com&wTime=20220531173940&redirect=landing&isAddedCart=']
+};
+//card[30] = ["third card : 30s",[100,30]];
+
+var order = {}
+Object.keys(card).sort().forEach(function(key){
+  order[key] = card[key];
+});
+  
+  
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player(
+    'player', {
+      height: '460',
+      width: '700',
+      playerVars: { 'autoplay': 1, 'controls': 0, 'mute':1 },
+      videoId: 'iK3hAvBCpYc', // 영상 고유 주소
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    }
+  );
+}
+
+function onPlayerReady(event) {
+  player.seekTo(section.start);
+  player.playVideo();
+}
+
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING) {
+    var duration = section.end - section.start;
+    setTimeout(()=>{vidStop()}, duration * 1000);
+    //정한 시간초마다 실행되도록 한다
+    var keys = Object.keys(order);
+    for(let i = 0; i<keys.length; i++){
+      setTimeout(()=>{
+        vidEvent(order[keys[i]])
+        console.log(order[keys[i]])
+      }, keys[i] * 1000);
+    } 
+  }
+}
+  
+  var keys = Object.keys(order);
+  document.getElementById('point').innerHTML += "<ul>";
+  for(let i = 0; i<keys.length; i++){
+    var key = order[keys[i]];
+    document.getElementById('point').innerHTML += "<li><a href='"+key[3]+"'>"+key[0]+"</a></li>";
+  }
+  document.getElementById('point').innerHTML += "</ul>";
+  
+function vidEvent(time) {
+  //player.seekTo(section.start);
+  document.getElementsByClassName('cont')[0].innerHTML = '<a href="'+time[3]+'">'+time[0]+'</a>';
+  
+  if(time[2]!=''){
+    document.getElementsByClassName('imgcont')[0].innerHTML =   '<img src ="https://drive.google.com/uc?export=download&id='+time[2]+'">';
+    
+  }else{
+    document.getElementsByClassName('imgcont')[0].innerHTML = '<img src="logo.png" alt="">'
+  }
+  
+  var x = time[1][0];
+  var y = time[1][1];
+  document.getElementsByClassName('button')[0].style.top = y+"px";
+  document.getElementsByClassName('button')[0].style.left =x+"px";
+   document.getElementsByClassName('button')[0].style.display = "flex";
+  
+  document.getElementsByClassName('card')[0].style.top = y + "px";
+  document.getElementsByClassName('card')[0].style.left = x+60+"px";
+  //time[1] => point 좌표
+  //timeout 5초 뒤 삭제
+  
+  //player.stopVideo();
+}
+  
+function vidStop(){
+  player.stopVideo();
+  document.getElementsByClassName('button')[0].style.display = "none";
+  document.getElementsByClassName('card')[0].style.display = "none";
+}
+  
+  document.getElementById('hidebt').addEventListener('click',function(){
+    if(document.getElementsByClassName('button')[0].style.display == "flex"){
+      document.getElementsByClassName('button')[0].style.display = "none";
+    }else{
+      document.getElementsByClassName('button')[0].style.display = "flex";
+    }
+    
+  });
+  
+  document.getElementsByClassName('button')[0].addEventListener('click',function(){
+    if(document.getElementsByClassName('card')[0].style.display == "flex"){
+      document.getElementsByClassName('card')[0].style.display = "none";
+    }else{
+      document.getElementsByClassName('card')[0].style.display = "flex";
+    }
+    
+  });
+  </script>
+</body>
+
+</html>
